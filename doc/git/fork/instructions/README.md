@@ -1,13 +1,3 @@
-## Cheat Sheet
-after you clone your fork do this (read below for explanation):
-
-```
-git remote add sst-official https://github.com/sstsimulator/sst-core
-git pull --all
-git branch devel
-git branch devel --set-upstream-to sst-official/devel
-```
-
 ## Creating a Fork
 A fork is simply a personal copy of the repo on github for example the official SST-core repo is located here:
 
@@ -18,30 +8,11 @@ my fork of that repo is here:
 `https://github.com/fryeguy52/sst-core`
 
 
-
-The way to create your own fork is to click the fork button in the upper right while you are at the official repo
-
-
-## Using your fork
-Immediately after you have created your fork the `devel` and `master` branches will be the same as on the official repo, so you can simply clone your fork and work from that clone
+The way to create your own fork is to click the fork button in the upper right while you are at the official repo. Once you have done that you can simply clone
 
 ```
 git clone https://github.com/fryeguy52/sst-core
 ```
-
-then create a brach off of `devel` make your changes, commit and push. All the commits will be on a brach on your fork.
-
-```
-git checkout devel
-git checkout -b my-new-feature-branch
-<making changes ...>
-git add <approprite files>
-git commit
-git push
-```
-
-once you are done with the feature and would like to get changes to the official repo, you will do that with a pull request from the branch on your fork to the `devel` branch on the official repo. This is done through the github UI.
-
 
 ## Getting updates from the official repo to your local clone
 
@@ -75,3 +46,18 @@ git pull
 ```
 
 Now you can branch from `devel` to create new features and when you push those feature branches they will push to your fork. When you pull devel, it will get updates from the official sst repo
+
+## Feature branches
+Once a local clone has more than 1 remote (origin and sst-official i nthis case) you will need to tell git which remote to track for a new branch.  this requires one additional step when pushing a branch for the first time.  I personally like to push the brach right after I create it like shown below.
+
+```
+git checkout devel
+git checkout -b my-new-feature-branch
+git push --set-upstream origin my-new-feature-branch
+<making changes ...>
+git add <approprite files>
+git commit
+git push
+```
+
+once you are done with the feature and would like to get changes to the official repo, you will do that with a pull request from the branch on your fork to the `devel` branch on the official repo. This is done through the github UI.
